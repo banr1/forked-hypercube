@@ -18,14 +18,14 @@ def binom(n, k):
 ## Equals the coefficient of x^k in the product (1+x+x^2+... +x^{m})^n
 ## Requires n>1 and k<=n*m
 def nb(k, m, n):
-    sum = 0
+    sum_ = 0
     for s in range(0, 1 + floor(k / (m + 1))):
         summand = binom(n, s) * binom(k - s * (m + 1) + n - 1, n - 1)
         if s & 1 == 0:
-            sum += summand
+            sum_ += summand
         else:
-            sum -= summand
-    return sum
+            sum_ -= summand
+    return sum_
 
 
 def test_precompute():
@@ -70,9 +70,9 @@ def compute_cost(d):
 ## checksum cost
 def compute_checksum_cost(sum_value):
     total_cost = 0
+    global w_value
     while sum_value != 0:
-        global w_value
-        total_cost = sum_value % w_value
+        total_cost += sum_value % w_value
         sum_value //= w_value
     return total_cost
 
@@ -208,7 +208,7 @@ def compute_max_entropy_lower_bound(chains, chain_len, mu_scaled):
         if (
             sum_ld + layer_sizes[d + 1]
         ) * mu_scaled > powcc:  # we will go over in the next step, so d+1 = d_0
-            mu_d0_scaled = (powcc - mu_scaled * (sum_ld)) / layer_sizes[d + 1]
+            # mu_d0_scaled = (powcc - mu_scaled * (sum_ld)) / layer_sizes[d + 1]: unused
             cost_scaled = sum_ld_cd * mu_scaled + (
                 powcc - mu_scaled * (sum_ld)
             ) * compute_cost(d + 1)
@@ -226,6 +226,7 @@ def compute_slice_size(d0, slice_len):
 
 def print_optimal_L2_values(sec_level, min_v, max_v, min_w, max_w):
     fname = "opt-L2-sec" + str(sec_level) + ".txt"
+    global w_value
     for v in range(
         min_v, max_v + 1
     ):  # we need signatures between 0.5K and 5K assuming 28 bytes per chain
@@ -241,7 +242,6 @@ def print_optimal_L2_values(sec_level, min_v, max_v, min_w, max_w):
         best_cost = wint_cost
         best_w = min_w
         for w in range(min_w, max_w + 1):  # no need in too expensive verifiers
-            global w_value
             w_value = w
             hcube_size_log2 = v * log(w, 2)
             if hcube_size_log2 < sec_level:
@@ -416,6 +416,7 @@ def find_best_constructions(sec_level, v, min_w, max_w):
 
 ## Compute cost of some variants
 def find_constructions(sec_level, v, min_w, max_w):
+    global w_value
     # 1. Winternitz
     # compute checksum chains
     chain_len_winternitz = ceil(pow(2, sec_level / v))
@@ -432,7 +433,6 @@ def find_constructions(sec_level, v, min_w, max_w):
     best_cost = wint_cost
     best_w = min_w
     for w in range(min_w, max_w + 1):  # no need in too expensive verifiers
-        global w_value
         w_value = w
         hcube_size_log2 = v * log(w, 2)
         if hcube_size_log2 < sec_level:
