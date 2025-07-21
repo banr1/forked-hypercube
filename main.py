@@ -327,6 +327,8 @@ def find_best_single_layer(sec_level, v, min_w, max_w):
                 if d0 < best_cost:
                     best_cost = d0
                     best_w = w
+                    print("d0: ", d0)
+                    print("w: ", w)
     return (best_cost, best_w)
 
 
@@ -530,48 +532,48 @@ def test_L2():
 
 
 def main():
-    # find_best_constructions(128,64,2,16)
-    # find_best_constructions(128,32,2,32)
+    # find_best_constructions(128, 64, 2, 16)
+    # find_best_constructions(128, 32, 2, 32)
 
-    # find_best_constructions(128,136,2,8)
-    # find_best_constructions(128,132,2,8)
-    # find_best_constructions(128,128,2,8)
+    # find_best_constructions(128, 136, 2, 8)
+    # find_best_constructions(128, 132, 2, 8)
+    # find_best_constructions(128, 128, 2, 8)
 
 
-    # find_best_constructions(128,86,2,12)
-    # find_best_constructions(128,84,2,12)
-    # find_best_constructions(128,81,2,12)
+    # find_best_constructions(128, 86, 2, 12)
+    # find_best_constructions(128, 84, 2, 12)
+    # find_best_constructions(128, 81, 2, 12)
 
-    # find_best_constructions(128,68,2,16)
-    # find_best_constructions(128,67,2,16)
-    # find_best_constructions(128,64,2,16)
+    # find_best_constructions(128, 68, 2, 16)
+    # find_best_constructions(128, 67, 2, 16)
+    # find_best_constructions(128, 64, 2, 16)
 
-    # find_best_constructions(128,55,2,32)
-    # find_best_constructions(128,50,2,32)
-    # find_best_constructions(128,45,2,32)
-    # find_best_constructions(128,40,2,32)
-    # find_best_constructions(128,35,2,32)
-    # find_best_constructions(128,30,2,48)
+    # find_best_constructions(128, 55, 2, 32)
+    # find_best_constructions(128, 50, 2, 32)
+    # find_best_constructions(128, 45, 2, 32)
+    # find_best_constructions(128, 40, 2, 32)
+    # find_best_constructions(128, 35, 2, 32)
+    # find_best_constructions(128, 30, 2, 48)
     find_best_constructions(128, 25, 2, 96)
 
-    # find_best_constructions(160,168,2,8)
-    # find_best_constructions(160,165,2,8)
-    # find_best_constructions(160,160,2,8)
+    # find_best_constructions(160, 168, 2, 8)
+    # find_best_constructions(160, 165, 2, 8)
+    # find_best_constructions(160, 160, 2, 8)
 
-    # find_best_constructions(160,106,2,12)
-    # find_best_constructions(160,104,2,12)
-    # find_best_constructions(160,101,2,12)
+    # find_best_constructions(160, 106, 2, 12)
+    # find_best_constructions(160, 104, 2, 12)
+    # find_best_constructions(160, 101, 2, 12)
 
-    # find_best_constructions(160,84,2,12)
-    # find_best_constructions(160,80,2,12)
+    # find_best_constructions(160, 84, 2, 12)
+    # find_best_constructions(160, 80, 2, 12)
 
-    # find_best_constructions(160,70,2,16)
-    # find_best_constructions(160,60,2,24)
-    # find_best_constructions(160,50,2,32)
+    # find_best_constructions(160, 70, 2, 16)
+    # find_best_constructions(160, 60, 2, 24)
+    # find_best_constructions(160, 50, 2, 32)
 
-    # find_best_constructions(160,45,2,32)
-    # find_best_constructions(160,40,2,48)
-    # find_best_constructions(160,35,2,64)
+    # find_best_constructions(160, 45, 2, 32)
+    # find_best_constructions(160, 40, 2, 48)
+    # find_best_constructions(160, 35, 2, 64)
 
     # test_precompute()
 
